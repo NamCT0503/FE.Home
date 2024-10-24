@@ -4,7 +4,7 @@ const ProductionSection = () => {
             <div className="container">
                 <div className="main_product roomy-80">
                     <div className="head_title text-center fix">
-                        <h2 className="text-uppercase">What Client Say</h2>
+                        <h2 className="text-uppercase">Sản phẩm của chúng tôi</h2>
                         <h5>Clean and Modern design is our best specialist</h5>
                     </div>
 

@@ -1,0 +1,244 @@
+.wrapContainerIndexPage{
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr 8fr;
+    grid-template-areas: 
+        'menubar navbarH'
+        'menubar content'
+    ;
+}
+
+.wrapContainerMenubar{
+    grid-area: menubar;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263544;
+    overflow: hidden;
+}
+
+.wrapNavbarHeader{
+    grid-area: navbarH;
+    box-shadow: 0 2px 4px 0 rgba(43,43,43,0.1);
+    position: relative;
+}
+
+.wrapContainerContent{
+    /* border: 1px solid blue; */
+    grid-area: content;
+    overflow-y: scroll;
+    background-color: #f8f9fa;
+}
+
+/* ==================== Bắt đầu phần wrapContainerMenubar ======================= */
+.wrapContainerMenubar img {
+    max-height: 80px;
+    margin-top: 2%;
+    filter: drop-shadow(1px 0 5px white);
+}
+
+.containerMenubar{
+    width: 100%;
+    height: 84%;
+    padding: 5% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    position: relative;
+    color: #b7c0cd;
+}
+
+.containerMenubar h4 {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    color: #F1F7FF;
+}
+
+.itemMenubar{
+    width: 100%;
+    padding: 5%;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.itemMenubar:hover{
+    color: white;
+}
+
+.itemMenubar:active, .currentPage{
+    background: #1D2531;
+    border-left: 2px solid #42a5f5;
+    color: #42a5f5;
+}
+
+.blog{
+    position: relative;
+}
+
+.itemMenubar i {
+    margin-right: 5%;
+}
+
+.itemMenubar i ~ span {
+    width: 80%;
+}
+
+.notifyBlogs{
+    position: absolute;
+    background-color: #FF5370;
+    color: white;
+    transform: translateX(100%);
+    padding: 2% 4%;
+    font-size: 10.5px;
+    border-radius: 5px;
+}
+/* ==================== Kết thúc phần wrapContainerMenubar ======================= */
+
+/* ==================== Bắt đầu phần wrapNavbarHeader ======================= */
+/* ===== Bắt đầu phần containerSearchArea ===== */
+.wrapNavbarHeader{
+    display: flex;
+    justify-content: space-between;
+    max-height: 80px;
+    z-index: 3;
+    /* overflow: hidden; */
+}
+
+.containerSearchArea, .containerProfileArea{
+    height: 100%;
+}
+
+.containerSearchArea{
+    width: 30%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 2%;
+    position: relative;
+}
+
+.containerSearchArea i{
+    cursor: pointer;
+}
+
+#iconSearch{
+    position: absolute;
+    background-color: white;
+    padding: 5px 30px 5px 5px;
+    max-height: 20px;
+    transition: all 0.5s ease-in-out;
+    z-index: 1;
+}
+
+#iconCloseSearch{
+    margin-right: 5%;
+    font-size: 20px;
+}
+
+.containerSearchArea i ~ input{
+    max-width: 250px;
+    height: 20px;
+    font-size: 12px;
+    border: none;
+    outline: none;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+/* ===== Kết thúc phần containerSearchArea ===== */
+
+/* ===== Bắt đầu phần containerProfileArea ===== */
+.containerProfileArea{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+    background-color: white;
+}
+
+.notifyPersional i, .chatPersional i{
+    position: relative;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.notifyPersional span, .chatPersional span {
+    color: white;
+    padding: 2px 5px;
+    font-size: 75%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.notifyPersional span {
+    background-color: #FF5370;
+}
+
+.chatPersional span{
+    background-color: #2ed8b6;
+}
+
+.areaProfile{
+    width: 40%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+}
+
+.areaProfile img {
+    border: 2px solid white;
+    height: 60px;
+    width: 60px;
+    margin-right: 5%;
+    border-radius: 50%;
+    background: #333;
+    box-shadow: 0 5px 10px 0 rgba(43,43,43,0.2);
+}
+
+.areaProfile span {
+    font-size: 15;
+    color: #333333;
+}
+
+.areaProfile i{
+    font-size: 10px;
+    margin-left: 5px;
+}
+/* ===== Kết thúc phần containerProfileArea ===== */
+
+/* ===== Bắt đầu phần areaDropMenuProfile ===== */
+.areaDropMenuProfile{
+    position: absolute;
+    /* border: 1px solid red; */
+    bottom: -100%;
+    background-color: white;
+    right: 5%;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    box-shadow: 0 2px 4px 0 rgba(43,43,43,0.5);
+    /* transform: translateY(-110%); */
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+}
+.areaDropMenuProfile>*{
+    padding: 10px 5px;
+    cursor: pointer;
+}
+
+.divOption>*{
+    padding: 0 5px;
+}
+/* ===== Kết thúc phần areaDropMenuProfile ===== */
+/* ==================== Kết thúc phần wrapNavbarHeader ======================= */

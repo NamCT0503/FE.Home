@@ -5,6 +5,7 @@ import HomeSection from "./HomeSection";
 import ProductionSection from "./ProductionSection";
 import ActionSection from "./ActionSection";
 import Footer from "./Footer";
+import ServiceSection from "./ServiceSection";
 
 const Culmn = () => {
     return(
@@ -13,6 +14,7 @@ const Culmn = () => {
             <HomeSection></HomeSection>
             <FeaturedSection></FeaturedSection>
             <ProductionSection></ProductionSection>
+            <ServiceSection></ServiceSection>
             <TestSection></TestSection>
             <ActionSection></ActionSection>
             <Footer></Footer>

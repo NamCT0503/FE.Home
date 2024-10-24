@@ -1,0 +1,272 @@
+.wrapContainerBlogContent{
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.wrapContainerBlogContent header{
+    padding-left: 5%;
+}
+
+/* ======================= Bắt đầu phần nội dung chính ======================= */
+.wrapContainerContentBC{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+/* ========== Bắt đầu phần navbarTitle ========== */
+.navbarTittleBC{
+    border-radius: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 1%;
+    margin: 2% 0;
+    max-height: 40px;
+    background-color: white;
+    box-shadow: 0 0 5px grey;
+}
+
+.pathNavbar{
+    color: gray;
+    transition: all 0.3s ease-in-out;
+}
+
+.pathNavbar:hover{
+    color: #C60000;
+}
+
+.pathNavbar::after{
+    content: ">";
+    margin: 0 10px;
+    color: black;
+}
+
+.pathNavbar{
+    cursor: pointer;
+}
+/* ========== Kết thúc phần navbarTitle ========== */
+
+/* ========== Bắt đầu phần blogOverView ========== */
+.containerBlogOverview{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 0 5px grey;
+}
+
+.contentBC{
+    width: 55%;
+    height: 100%;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 2%;
+}
+
+.headerBC{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.containerTagBC{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5%;
+}
+
+.containerTagBC > *{
+    background-color: #f8f8f8;
+    padding: 1% 2%;
+    border-radius: 20px;
+    box-shadow: 0 0 5px grey;
+}
+
+.containerBlogOverview img{
+    width: 45%;
+    max-height: 300px;
+    border-radius: 20px;
+}
+/* ========== Kết thúc phần blogOverView ========== */
+
+/* ========== Bắt đầu phần containerContentBC ========== */
+.containerContentBC{
+    width: 100%;
+    margin: 2%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.areaTableOfContent{
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 5px grey;
+    width: 30%;
+    max-width: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 90px;
+}
+
+.headerToC{
+    width: 90%;
+    max-width: 370px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tableOfContent{
+    width: 90%;
+    max-width: 370px;
+}
+
+.tableOfContent >*{
+    padding: 3% 2%;
+    margin: 2% 0;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.tableOfContent >*:hover{
+    background-color: lightpink;
+    color: white;
+    border-left: 3px solid #C60000;
+    border-radius: 0 10px 10px 0;
+
+}
+
+.areaShowContentBC{
+    width: 70%;
+    padding: 2%;
+    max-width: 920px;
+    border-radius: 20px;
+    box-shadow: 0 0 5px grey;
+}
+
+.textNormalBC{
+    padding: 1% 0;
+}
+
+.textNormalBC >*{
+    padding: 2% 0;
+}
+
+.textHeaderBC{
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.imgInContentBC{
+    width: 100%;
+}
+
+.imgInContentBC img{
+    width: 100%;
+}
+
+.textulBC, .textolBC{
+    margin-left: -2%;
+}
+/* ========== Kết thúc phần containerContentBC ========== */
+
+/* ========== Bắt đầu phần wrapContainerOrtherBlogsBC ========== */
+.wrapContainerOrtherBlogsBC{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerOrtherBlogsBC{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerOrtherBlogsBC i{
+    margin: 0 !important;
+    padding: 10px 5px !important;
+    background-color: rgba(255, 255, 255, 0) !important;
+    color: black !important;
+    font-size: 20px !important;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.containerOrtherBlogsBC i:hover{
+    background-color: #f4f4f4 !important;
+}
+
+.containerBlogsBC{
+    width: 1400px;
+
+}
+
+.footerViewBlogBC{
+    width: 100%;
+}
+
+.footerViewBlogBC img{
+    width: 100%;
+}
+/* ========== Kết thúc phần wrapContainerOrtherBlogsBC ========== */
+/* ======================= Bắt đầu phần nội dung chính ======================= */
+
+
+@media (max-width: 739px){
+    .wrapContainerContentBC{
+        padding-top: 15%;
+    }
+
+    .navbarTittleBC{
+        display: none;
+    }
+
+    .containerBlogOverview{
+        flex-direction: column-reverse;
+        height: 400px;
+        margin-bottom: 5%;
+    }
+
+    .contentBC{
+        width: 95%;
+    }
+
+    .containerBlogOverview img {
+        width: 100%;
+    }
+
+    .containerContentBC{
+        flex-direction: column-reverse;
+    }
+
+    .areaShowContentBC{
+        width: 95%;
+    }
+
+    .areaTableOfContent{
+        top: 0;
+        width: 100%;
+        margin-bottom: 5%;
+        position: relative !important;
+    }
+}

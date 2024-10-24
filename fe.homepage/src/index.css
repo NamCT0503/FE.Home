@@ -1,3 +1,210 @@
 html {
   scroll-behavior: smooth;
 }
+
+
+/* ======================= Bắt đầu Section Production ======================= */
+#product{
+  background-color: #f5f5f5;
+}
+/* ======================= Kết thúc Section Production ======================= */
+
+
+/* ======================= Bắt đầu Section Service ======================= */
+#e-service{
+  /* border: 1px solid black; */
+}
+
+.es-container{
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3% 0;
+
+}
+
+.es-col{
+  width: 1200px;
+  padding: 0;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.es-row{
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 25px;
+}
+.es-row>*{
+  cursor: pointer;
+}
+
+.es-row-title{
+  /* border: 1px solid brown; */
+  width: 50%;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0;
+  background-color: white;
+  margin-bottom: 5%;
+}
+
+.es-content{
+  /* border: 1px solid violet; */
+  padding: 10px 35px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 25px;
+}
+.es-content:hover{
+  background-color: #222222;
+  color: white;
+}
+
+.es-card{
+  /* border: 1px solid black; */
+  background-color: transparent;
+  width: 350px;
+  height: 700px;
+  perspective: 1000px;
+  padding: 5px;
+  cursor: auto;
+}
+
+.es-card-inner{
+  /* border: 1px solid red; */
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+/* .es-diffirent{
+  display: none;
+} */
+
+/* .es-card:hover .es-card-inner {
+  transform: rotateY(180deg);
+} */
+
+.es-card-front, .es-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  max-height: 700px;
+}
+
+.es-card-front {
+  /* border: 1px solid blue; */
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  overflow: hidden;
+}
+
+.es-card-back {
+  background-color: #00a885;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* --- Content App Service --- */
+.content-package-app{
+  padding: 1%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.content-package-app ~ button{
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #222222;
+  outline: none;
+}
+.content-package-app ~ button:hover{
+  background-color: #222222;
+  color: white;
+}
+
+.content-line {
+  color: black;
+  margin: 0 5%;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.content-line {
+  display: flex;
+  align-items: center;
+}
+
+.content-line i {
+  padding-right: 8%;
+  width: 2%;
+}
+
+/* Content Web Service */
+.prices-web{
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.types-web{
+  font-size: 18px;
+}
+.type-package-web{
+  margin-bottom: 10px;
+}
+
+.package-web{
+  /* border: 1px solid black; */
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+}
+
+.content-package-web{
+  border: 1px solid white;
+  height: 70%;
+  overflow-y: scroll;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+  text-align: left;
+  padding: 5px;
+  /* height: fit-content; */
+  height: 470px;
+  /* max-height: 470px; */
+}
+.content-package-web::-webkit-scrollbar {
+  display: none;
+}
+.content-package-web ~ input{
+  padding: 10px 25px;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #035a49;
+  font-weight: 600;
+}
+.content-package-web ~ input:hover{
+  background-color: #222222;
+
+}
+/* ======================= Kết thúc Section Service ======================= */

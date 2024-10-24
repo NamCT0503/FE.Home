@@ -1,0 +1,443 @@
+.section{
+    width: 100%;
+    height: fit-content;
+}
+
+.header{
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    padding: 0 2%;
+    position: sticky;
+    z-index: 100;
+}
+header .titleHeader h1{
+    color: white !important;
+    cursor: pointer;
+}
+
+.containerBtnSignupSignin{
+    width: 15%;
+    padding: 0 2%;
+    margin-right: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.containerBtnSignupSignin div{
+    padding: 3% 6%;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+.btnSignup{
+    border: 1px solid #c60000;
+    background-color: white;
+    color: #c60000;
+}
+
+.btnSignup:hover{
+    border: 1px solid white;
+    background-color: #c60000;
+    color: white;
+    box-shadow: 0 0 5px white;
+}
+
+.btnSignin{
+    border: 1px solid #c60000;
+    background-color: #c60000;
+    color: white;
+}
+
+.btnSignin:hover{
+    box-shadow: 0 0 20px #c60000;
+}
+
+/* ======================= Bắt đầu phần menubar ======================= */
+.wrapMenubarBlogs{
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-around;
+    height: 5%;
+}
+
+.menubar{
+    width: 70%;
+    height: 40px;
+    transform: translateY(-45%);
+}
+
+.menubar ul{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 0 5px grey;
+}
+
+.menubar ul > * {
+    list-style: none;
+    padding: 0.9% 5%;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menubar ul >*:hover{
+    background-color: #c60000 !important;
+    color: white !important;
+    cursor: pointer;
+}
+
+.containerSearch{
+    background-color: white;
+    box-shadow: 0 0 5px grey;
+    width: 20%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.inputSearch{
+    /* border: 1px solid orange; */
+    height: 100%;
+    width: 85%;
+}
+
+.inputSearch input{
+    height: 90%;
+    width: 100%;
+    border-radius: 20px 0 0 20px;
+    border: none;
+    outline: none;
+    padding-left: 5%;
+}
+
+.btnSearch{
+    border: 1px solid #c60000;
+    background-color: #c60000;
+    color: white;
+    height: 100%;
+    width: 15%;
+    border-radius: 0 20px 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.btnSearch:hover{
+    cursor: pointer;
+    background-color: white;
+    color: #c60000;
+}
+/* ======================= Kết thúc phần menubar ======================= */
+
+
+/* ======================= Bắt đầu phần các bài blog ======================= */
+.wrapContainerContentBlogs{
+    margin-top: 2%;
+    padding: 0 1%;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    height: fit-content;
+}
+
+.wrapContainerBlogs{
+    width: 85%;
+    margin-left: 1%;
+    margin-right: 1%;
+    height: fit-content;
+    position: relative;
+}
+
+.wrapContainerRelatedBlogs{
+    height: 100%;
+    width: 20%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 5px grey;
+}
+
+.titleContainerRealted{
+    padding-left: 5%;
+    position: relative;
+}
+
+.titleContainerRealted::after{
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 2px;
+    background-color: #d4d4d4;
+}
+
+.containerContentRelatedBlog{
+    margin-top: 2%;
+    padding: 5%;   
+}
+
+.areaHeaderBlogRelated{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+
+.areaContentBlogRelated{
+    text-align: left;
+    margin-bottom: 10%;
+}
+
+.areaContentBlogRelated:hover{
+    cursor: pointer;
+}
+/*  */
+
+.wrapContainerBlogAll{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerBlogOutstanding{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 5px grey;
+}
+
+.containerBlogOutstanding img {
+    width: 50%;
+    border-radius: 20px;
+    margin-left: 5%;
+}
+
+.contentOutStandingAll{
+    padding-left: 2%;
+}
+
+.contentOutStandingAll >*{
+    padding-bottom: 2%;
+}
+
+.headerOutstandingAll{
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.headerOutstandingAll:hover{
+    cursor: pointer;
+}
+
+.description{
+    font-size: 18px;
+}
+
+.description.allBlogs{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    height: fit-content;
+    text-overflow: ellipsis;
+}
+
+.tagBlog{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+
+.tagBlog >*{
+    font-size: 14px;
+    padding: 1%;
+}
+
+.tag{
+    padding: 1% 5%;
+    background-color: lightpink;
+    color: #c60000;
+    border-radius: 20px;
+}
+
+.containerAllBlogs{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    max-width: 1200px;
+}
+
+.containerGroup3Blogs{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin: 2% 0;
+    width: 100%;
+}
+
+.wrapContainerAllBlog{
+    width: 30%;
+    height: 400px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 5px grey;
+    transition: all 0.2s ease-in-out;
+    text-overflow: ellipsis;
+}
+
+.wrapContainerAllBlog:hover{
+    box-shadow: 0 0 10px black;
+    transform: scale(1.02);
+}
+
+.wrapContainerAllBlog img{
+    width: 100%;
+    height: 30%;
+    max-height: 150px;
+    border-radius: 20px;
+}
+
+.containerBlog{
+    height: 70%;
+    max-height: 300px;
+    padding: 5%;
+}
+
+.containerBlog > *{
+    margin: 5% 0;
+}
+
+.headerBlog{
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.headerBlog:hover{
+    cursor: pointer;
+}
+
+.wrapContainerAllBlog img,
+.headerBlog{
+    cursor: pointer;
+}
+
+.containerPrevNext{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 8%;
+    overflow: hidden;
+}
+
+.containerPrevNext i{
+    color: black !important;
+    background-color: white !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    padding: 5% !important;
+    cursor: pointer;
+}
+
+.pageCurrent{
+    margin: 2%;
+    background-color: #c60000;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blogsPagination img{
+    width: 100%;
+}
+/* ======================= Kết thúc phần các bài blog ======================= */
+
+@media (max-width: 739px){
+    .titleHeader{
+        font-size: 10px;
+    }
+    
+    .containerBtnSignupSignin{
+        width: 30%;
+    }
+
+    .wrapMenubarBlogs{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menubar{
+        width: 80%;
+        height: 2%;
+        transform: translateY(0);
+        padding-right: 10%;
+    }
+
+    .containerSearch, .wrapContainerRelatedBlogs{
+        display: none;
+    }
+
+    /* Phần BlogAll */
+    .containerBlogOutstanding{
+        flex-direction: column;
+        height: 350px;
+        justify-content: start;
+        margin-bottom: 5%;
+    }
+
+    .containerBlogOutstanding img{
+        width: 100%;
+        margin: 0;
+        margin-bottom: 5%;
+    }
+
+    .containerGroup3Blogs{
+        flex-direction: column;
+    }
+
+    .wrapContainerAllBlog{
+        width: 100%;
+        margin-bottom: 7%;
+    }
+
+    .wrapContainerAllBlog img {
+        height: 40%;
+    }
+
+    .containerPrevNext{
+        width: 25%;
+    }
+
+    .description{
+        width: 270px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}

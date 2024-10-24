@@ -1,0 +1,211 @@
+.wrapContainerLayoutContent{
+    width: 99%;
+    height: 100%;
+}
+
+.wrapTable{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.wrapTable table {
+    border-radius: 5px;
+    box-shadow: 0 2px 12px -3px rgba(0,0,0,0.5);
+}
+
+.wrapTable table tr th {
+    padding: 2%;
+}
+
+.wrapTable table, tr{
+    border: 1px solid grey;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-collapse: collapse;
+    margin-top: 2%;
+    width: 80%;
+}
+
+td{
+    padding: 2% 0;
+    text-align: center;
+}
+.blogListView table tr td{
+    /* border: 1px solid blue; */
+    width: 300px;
+}
+
+.tdImg{
+    max-width: 300px;
+    padding: 5px;
+}
+.tdImg img{
+    width: 100%;
+}
+
+.tdDesc, .tdTitle{
+    max-width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/* 
+.tdOptions > *{
+    margin: 0 5px;
+} */
+
+.contentPackage td {
+    text-align: left;
+    padding-left: 10px;
+    outline: none;
+}
+
+.areaButton{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.areaButton button {
+    transform: translate(0, -10%);
+    outline: none;
+    color: white;
+    font-size: 20px;
+}
+
+.btnView{
+    border-color: #4099FF;
+    background-color: #4099FF;
+}
+.btnView:hover{
+    border-color: #4099FF;
+    background-color: #4099FF;
+    border-radius: 50%;
+}
+
+.btnEdit{
+    border-color: #FFB64D;
+    background-color: #FFB64D;
+}
+.btnEdit:hover{
+    border-color: #FFB64D;
+    background-color: #FFB64D;
+    border-radius: 50%;
+}
+
+.btnDelete{
+    border-color: #FF5370;
+    background-color: #FF5370;
+}
+.btnDelete:hover{
+    border-color: #FF5370;
+    background-color: #FF5370;
+    border-radius: 50%;
+}
+
+.btnCancel{
+    border-color: gray;
+    background-color: gray;
+}
+.btnCancel:hover{
+    border-color: gray;
+    background-color: gray;
+    border-radius: 50%;
+}
+
+.btnSave{
+    border-color: #2ed8b6;
+    background-color: #2ed8b6;
+}
+.btnSave:hover{
+    border-color: #2ed8b6;
+    background-color: #2ed8b6;
+    border-radius: 50%;
+}
+
+.areaCreate{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+    position: relative;
+}
+
+.areaCreate > *{
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.divWrapBtnCreate{
+    position: absolute;
+    width: 20%;
+    text-align: center;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease-in-out;
+}
+
+.btnCreate{
+    border-color: #42b883;
+    background-color: #42b883;
+    color: white;
+    padding: 15px 20px;
+}
+.btnCreate:hover{
+    border-color: #42b883;
+    background-color: #42b883;
+    color: white;
+    border-radius: 50%;
+}
+
+.areaCreate input{
+    margin: 10px;
+    padding: 5px;
+}
+
+.cancelAndSaveCreate{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cancelAndSaveCreate button {
+    margin-right: 10px;
+    transform: translate(-10%, -10%);
+    color: white;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+
+.contentCreate{
+    position: fixed;
+    top: -50px;
+    flex-direction: row-reverse;
+    justify-content: end;
+    align-items: center;
+    position: relative;
+}
+
+.contentCreate .btnCreate{
+    transform: translateY(-10%);
+}
+
+.contentCreate input {
+    width: 0;
+}
+
+.contentCreate .divWrapBtnCreate{
+    all: unset;
+    position: absolute;
+    z-index: 2;
+    background-color: #f8f9fa;
+    width: 10%;
+    height: 100%;
+    text-align: left;
+}

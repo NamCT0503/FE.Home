@@ -1,0 +1,124 @@
+.createBlog{
+    text-align: right;
+    padding-right: 50px;
+}
+
+.btnCreate{
+    margin-top: -10px;
+    padding: 15px 20px !important;
+}
+
+.wrapTable{
+    margin-bottom: 20px;
+}
+.wrapTable table{
+    table-layout: fixed;
+}
+.wrapTable table tr td {
+    overflow: scroll;
+}
+
+.headTable{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 3;
+}
+
+.tdAvatar{
+    width: 120px;
+    height: 120px;
+} 
+.tdAvatar img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+
+.wrapContainerInfoAccount{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 12px -3px rgba(0,0,0,0.5);
+    padding: 1%;
+    width: 80%;
+}
+
+.containerInfoAccont{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: start;
+    height: fit-content;
+}
+
+.areaAvatar {
+    height: 300px;
+    width: 30%;
+    position: relative;
+}
+
+.areaAvatar img{
+    border-radius: 50%;
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+}
+
+.divUploadAvatar{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+}
+.divUploadAvatar i {
+    display: none;
+}
+.divUploadAvatar:hover{
+    background-color: #35495e;
+}
+.divUploadAvatar:hover i{
+    display: block;
+}
+
+.areaInfoAccount{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: start;
+}
+
+.areaInfoAccount > *{
+    cursor: pointer;
+    margin-bottom: 2%;
+    font-size: 20px;
+    width: 90%;
+}
+
+.areaInfoAccount input{
+    height: 40px;
+}
+
+.areaInfoAccount span, .areaBtn{
+    text-align: right;
+}
+
+.areaBtn button {
+    cursor: pointer;
+    margin-left: 10px;
+}
