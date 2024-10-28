@@ -47,7 +47,7 @@ const BlogAll = (props: Blogs) => {
         fetcher(url_getBlogOutstanding, true);
     }, []);
 
-    if((!blogOutstanding || blogOutstanding.count===0) && (dataBlogs as any)?.blogs?.length===0){
+    if((!blogOutstanding || blogOutstanding.count===0) && (!dataBlogs[0]?.blogs || dataBlogs[0]?.blogs?.length===0)){
         return(
             <DotLottieReact
                 src="https://lottie.host/8ee303ea-acde-4e78-bd39-fa92a440f34a/SIcGfi0vNv.lottie"

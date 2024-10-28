@@ -1,0 +1,142 @@
+/* z-index bắt đầu từ 10 */
+.wrapContainerChatIdx{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 5px 5px black;
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+    /* transform: translateX(100%); */
+}
+
+/* ======================= Bắt đầu phần thanh chat dọc (wrapContainerChatIdx) ======================= */
+/* ===== Phần tìm kiếm ===== */
+.containerSearchUser{
+    /* border: 1px solid black; */
+    width: 90%;
+    height: 30px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    align-items: center;
+    padding-left: 10px;
+}
+.containerSearchUser, .containerSearchUser input{
+    border-radius: 20px;
+    background-color: #d8d8d8;
+}
+.containerSearchUser input{
+    margin-left: 10px;
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+.containerSearchUser i{
+    cursor: pointer;
+}
+/* ========================= */
+
+/* ===== Phần danh sách người dùng ===== */
+.containerUser{
+    /* border: 1px solid red; */
+    height: 700px;
+    width: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.infoUserChat{
+    /* border: 1px solid black; */
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px 5px;
+    cursor: pointer;
+}
+.infoUserChat:hover{
+    background-color: #f4f4f4;
+}
+
+.areaAvatarChat{
+    height: 100%;
+    position: relative;
+}
+.areaAvatarChat img{
+    height: 60px;
+    width: 60px;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.isOnline{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #28A745;
+    border-radius: 50%;
+    bottom: 0;
+    right: 15px;
+}
+
+.fullnameUserChat{
+    font-weight: 600;
+    font-size: 15px;
+    margin-right: 25px;
+    width: 140px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.fullnameUserChat~span{
+    position: absolute;
+    right: 20px;
+    top: 0;
+}
+
+.areaLineChatLastest{
+    position: relative;
+    margin-left: 10px;
+}
+.lineChatLastest{
+    /* border: 1px solid black; */
+    width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.optionUserChat{
+    position: absolute;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(165, 160, 160);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    display: none;
+}
+.infoUserChat:hover .optionUserChat{
+    display: flex;
+}
+/* .optionUserChat:hover .infoUserChat{
+    background-color: transparent;
+} */
+/* ================================ */
+/* ======================= Kết thúc phần thanh chat dọc (wrapContainerChatIdx) ======================= */

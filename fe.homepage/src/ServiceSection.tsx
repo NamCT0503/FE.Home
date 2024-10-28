@@ -123,16 +123,16 @@ const ServiceSection = () => {
                             filterDataApp?.length! >= filterDataWeb?.length! ?
 
                             filterDataApp?.map((items, idx) => {
-                                let subClass= '';
                                 const content = dataSerApp?.filter(data => data.serapp_id === items.serapp_id)
                                 .map(data => ({
                                     icon: data.icon,
                                     content: data.content
                                 }));
 
-                                if(items.type === 'Personal') subClass = 'personal';
-                                if(items.type === 'Professional') subClass = 'professional';
-                                if(items.type === 'Business') subClass = 'business';
+                                // let subClass: string;
+                                // if(items.type === 'Personal') subClass = 'personal';
+                                // if(items.type === 'Professional') subClass = 'professional';
+                                // if(items.type === 'Business') subClass = 'business';
 
                                 const webItem = filterDataWeb?.[idx];
                                 const contentWeb = dataSerWeb
@@ -209,7 +209,7 @@ const ServiceSection = () => {
                                 if(webs.title?.includes('CHUYÊN NGHIỆP')) subClassWeb = 'pro'
 
                                 const appItem = filterDataApp?.[idx];
-                                let subClass= '';
+                                // let subClass= '';
                                 const contentApp = dataSerApp?.filter(data => data.serapp_id === appItem?.serapp_id)
                                 .map(data => ({
                                     icon: data.icon,

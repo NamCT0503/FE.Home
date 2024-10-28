@@ -8,6 +8,7 @@
         'menubar navbarH'
         'menubar content'
     ;
+    position: relative;
 }
 
 .wrapContainerMenubar{

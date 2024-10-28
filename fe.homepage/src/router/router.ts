@@ -1,4 +1,9 @@
+const WS_PORT = 3300;
+const WS_DOMAIN = 'localhost'
+export const WS_BASE_URL = `ws://${WS_DOMAIN}:${WS_PORT}`;
+
 export const API_BASE_URL = 'http://localhost:5000';
+// export const API_BASE_URL = 'https://be-homepage.ftcom.org'
 
 const API_ROUTER = {
     LOGIN: `${API_BASE_URL}/api/homepage/login`,
@@ -47,6 +52,17 @@ const API_ROUTER = {
     CREATEBC: `${API_BASE_URL}/api/homepage/service/blog/content/create`,
     UPDATEBC: `${API_BASE_URL}/api/homepage/service/blog/content/update`,
     DELETEBC: `${API_BASE_URL}/api/homepage/service/blog/content/delete/:id/:scope`,
+
+    //Chat Real-time
+    GET_INFOGCBYID: `${API_BASE_URL}/api/homepage/admin/group-chat/get-by/:id`,
+    GETALL_MESSAGEINGC: `${API_BASE_URL}/api/homepage/admin/chat/group-chat/:sinceday/:sender/:revicer/:grchatid`,
+    GET_MESSAGEINCHAT11: `${API_BASE_URL}/api/homepage/admin/chat/one-to-one/:to`,
+    GET_INFOMESSAGE: `${API_BASE_URL}/api/homepage/admin/chat/get-by/:idchat`,
+    CREATE_GROUPCHAT: `${API_BASE_URL}/api/homepage/admin/group-chat/create`,
+    GC_USERSEEN: `${API_BASE_URL}/api/homepage/admin/view/user-seend`,
+    UPDATE_GROUPCHAT: `${API_BASE_URL}/api/homepage/admin/group-chat/update`,
+    DELETE_GROUPCHAT: `${API_BASE_URL}/api/homepage/admin/group-chat/delete/:id`,
+    DELETE_CHAT: `${API_BASE_URL}/api/homepage/admin/chat/delete/:id`
 }
 
 export default API_ROUTER;

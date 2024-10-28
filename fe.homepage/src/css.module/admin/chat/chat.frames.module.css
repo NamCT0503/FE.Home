@@ -1,0 +1,137 @@
+/* chiều rộng 1 khung chat là 350px */
+
+.wrapContainerFrameChat{
+    border: 1px solid black;
+    position: absolute;
+    right: 80px;
+    bottom: 5px;
+    height: 400px;
+    width: 1200px;
+    z-index: 9;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: end;
+    align-items: center;
+}
+
+.containerFrameChat{
+    border: 1px solid red;
+    border-radius: 5px;
+    width: 350px;
+    height: 100%;
+    margin: 0 25px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 6fr 0.8fr;
+    grid-template-areas: 
+        'top top top'
+        'view view view'
+        'bottom bottom bottm'
+    ;
+    background-color: #f5f9ee;
+}
+/* ===== Phần trên khung chat ===== */
+.areaTopFramChat{
+    width: 100%;
+    grid-area: top;
+    box-shadow: 0 0 3px grey;
+    padding: 4px;
+}
+
+.operationChat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.infoAccTop{
+    width: 100%;
+    justify-content: start;
+}
+
+.areaInfoUser{
+    border: 1px solid black;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 60%;
+    cursor: pointer;
+}
+.areaInfoUser img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.areaInfoUser img~div{
+    /* border: 1px solid blue; */
+    width: 160px;
+}
+.divFullname, .divFullname~div{
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.divFullname{
+    /* border: 1px solid red; */
+    font-weight: 800;
+}
+.divFullname~div{
+    font-size: 12px;
+}
+
+.areaOptionFrameChat{
+    border: 1px solid black;
+    height: 100%;
+    width: 130px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.areaOptionFrameChat>*{
+    cursor: pointer;
+}
+.areaOptionFrameChat #minimize{
+    /* font-size: 20px; */
+    transform: translateY(-40%);
+}
+#online{
+    font-size: 10px;
+    color: #28A745;
+}
+/* ===================================================== */
+
+.areaViewChat{
+    /* border: 1px solid blue; */
+    /* background-color: blue; */
+    grid-area: view;
+    overflow-y: scroll;
+}
+
+
+/* ===== Phần dưới khung chat ===== */
+.areaBottomChat{
+    border: 1px solid red;
+    /* background-color: aqua; */
+    grid-area: bottom;
+    grid-template-columns: minmax(0.5fr, 150px);
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 5px;
+}
+.areaBottomChat textarea {
+    width: 70%;
+    resize: none;
+    max-height: 150px;
+    overflow-y: scroll;
+}
+.areaBottomChat i {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* ================================== */

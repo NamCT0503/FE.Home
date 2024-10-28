@@ -11,7 +11,7 @@ const ContentPackage = () => {
     const [zIndexDivCreate, setZIndexDivCreate] = useState(2);
     const [widthInputCreate, setWidthInputCreate] = useState('0');
     const [opacityAreaEditC, setOpacityAreaEditC] = useState(0);
-    const [edit, setEit] = useState<number>();
+    // const [edit, setEit] = useState<number>();
     const [dataCreate, setDataCreate] = useState({
         c_icon: '',
         c_content: '',
@@ -68,7 +68,7 @@ const ContentPackage = () => {
                 });
             }
             const dataRes = await res.json();
-            setEit(0);
+            // setEit(0);
             return alert(dataRes.message);
         } catch (error) {
             console.log('Create Error: ', error);

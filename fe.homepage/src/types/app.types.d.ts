@@ -73,3 +73,54 @@ export interface AccountEntity {
     updatedAt?: Date | string;
     deletedAt?: Date | string;
 }
+
+export interface GroupChatEntity {
+    id: string;
+    name: string;
+    avatar: string;
+    leader: number;
+    member: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    deletedAt?: Date | string;
+}
+
+export interface ChatEntity {
+    id: number;
+    grchatid: string;
+    sender: number;
+    revicer: number;
+    message: string;
+    status: 'sending' | 'sent' | 'reviced' | 'seen';
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+}
+
+export interface ViewerEntity {
+    id: number;
+    idchat: number;
+    viewby: number;
+    createdAt?: Date | string;
+}
+
+export interface UserStatusEntity {
+    id: number;
+    socket: WebSocket;
+    status: 'online' | 'offline';
+    lastOnline: Date | null;
+}
+
+export interface UserStatusEntity {
+    id: number;
+    socket: WebSocket;
+    fullname: string;
+    username: string;
+    avatar: string;
+    role: string;
+    lastMessage: string;
+    sentAt: string | Date;
+    sender: number;
+    revicer: number;
+    status: 'online' | 'offline';
+    lastOnline: Date | null;
+}
