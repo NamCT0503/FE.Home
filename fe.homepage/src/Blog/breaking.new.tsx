@@ -112,6 +112,9 @@ const BreakingNews: React.FC = () => {
         else navigate('../auth/signup')
     }
 
+    // const livechat_agentId = 5;
+    // localStorage.setItem('livechat_agentId', livechat_agentId.toString());
+
     return (
         <>
         <Helmet>
@@ -122,7 +125,7 @@ const BreakingNews: React.FC = () => {
             `}</style>
         </Helmet>
         <section id='section-news' className={style.section}>
-            <header className={style.header} id='header'>
+            <header className={style.header} /*id='header'*/ id={style.header}>
                     <div className={style.titleHeader} onClick={handleClickLogo}>
                         <h1>My Website</h1>
                     </div>

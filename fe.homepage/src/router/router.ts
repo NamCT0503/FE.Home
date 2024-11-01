@@ -60,6 +60,7 @@ const API_ROUTER = {
     GET_INFOMESSAGE: `${API_BASE_URL}/api/homepage/admin/chat/get-by/:idchat`,
     CREATE_GROUPCHAT: `${API_BASE_URL}/api/homepage/admin/group-chat/create`,
     GC_USERSEEN: `${API_BASE_URL}/api/homepage/admin/view/user-seend`,
+    SEENMESSAGE_1TO1: `${API_BASE_URL}/api/homepage/admin/chat/change-status-to-seen`,
     UPDATE_GROUPCHAT: `${API_BASE_URL}/api/homepage/admin/group-chat/update`,
     DELETE_GROUPCHAT: `${API_BASE_URL}/api/homepage/admin/group-chat/delete/:id`,
     DELETE_CHAT: `${API_BASE_URL}/api/homepage/admin/chat/delete/:id`

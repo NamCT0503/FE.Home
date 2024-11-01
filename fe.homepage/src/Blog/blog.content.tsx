@@ -34,8 +34,11 @@ const BlogContent = () => {
             const containerBottom = container.getBoundingClientRect().bottom;
             const areaTableHeight = areaTable.getBoundingClientRect().height;
             const viewportHeight = window.innerHeight;
+            console.log('bt: ', containerBottom);
+            console.log('he: ', areaTableHeight);
+            console.log('view: ', viewportHeight)
 
-            if (containerBottom <= areaTableHeight + viewportHeight) {
+            if (containerBottom <= areaTableHeight) {
                 setIsSticky(false);
             } else {
                 setIsSticky(true);
@@ -228,7 +231,7 @@ const BlogContent = () => {
                                 )
                             })}
                         </div>
-                        <div className={style.areaTableOfContent} style={{ position: isSticky ? 'sticky' : 'relative' }}>
+                        <div className={style.areaTableOfContent} style={{ position: isSticky ? 'sticky' : 'static' }}>
                             <div className={style.headerToC}>
                                 <h3>Nội dung bài đăng</h3>
                                 <i className="fa-solid fa-chevron-up"></i>

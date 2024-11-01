@@ -53,10 +53,12 @@ td{
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-/* 
+
 .tdOptions > *{
     margin: 0 5px;
-} */
+    padding: 5px 10px;
+    border: 1px solid transparent;
+}
 
 .contentPackage td {
     text-align: left;
@@ -71,10 +73,12 @@ td{
 }
 
 .areaButton button {
-    transform: translate(0, -10%);
+    /* transform: translate(0, -10%); */
     outline: none;
+    border-width: 1px;
     color: white;
     font-size: 20px;
+    padding: 5px 10px;
 }
 
 .btnView{

@@ -112,6 +112,7 @@ export interface UserStatusEntity {
 
 export interface UserStatusEntity {
     id: number;
+    idchat: number;
     socket: WebSocket;
     fullname: string;
     username: string;

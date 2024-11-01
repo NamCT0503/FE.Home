@@ -6,15 +6,15 @@
 .header{
     width: 100%;
     background-color: #333;
-    color: white;
     text-align: center;
     display: flex;
     justify-content: space-between;
-    top: 0;
     padding: 0 2%;
-    position: sticky;
+    position: sticky !important;
+    top: 0 !important;
     z-index: 100;
 }
+
 header .titleHeader h1{
     color: white !important;
     cursor: pointer;
@@ -71,7 +71,7 @@ header .titleHeader h1{
 .menubar{
     width: 70%;
     height: 40px;
-    transform: translateY(-45%);
+    /* transform: translateY(-45%); */
 }
 
 .menubar ul{
@@ -248,13 +248,17 @@ header .titleHeader h1{
 }
 
 .description{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-size: 18px;
 }
 
 .description.allBlogs{
-    display: -webkit-box;
+    /* display: -webkit-box; */
     -webkit-box-orient: vertical;
     overflow: hidden;
+    white-space: nowrap;
     -webkit-line-clamp: 3;
     line-clamp: 3;
     height: fit-content;
@@ -396,7 +400,7 @@ header .titleHeader h1{
         width: 80%;
         height: 2%;
         transform: translateY(0);
-        padding-right: 10%;
+        /* padding-right: 10%; */
     }
 
     .containerSearch, .wrapContainerRelatedBlogs{

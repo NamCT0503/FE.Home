@@ -4,7 +4,7 @@ import API_ROUTER from "./router/router";
 const ServiceSection = () => {
     const [spanWebBg, setSpanWebBg] = useState('#222222');
     const [spanWebColor, setSpanWebColor] = useState('white');
-    const [spanAppBg, setSpanAppBg] = useState('white');
+    const [spanAppBg, setSpanAppBg] = useState('#f5f5f5');
     const [spanAppColor, setSpanAppColor] = useState('#797979');
     const [rotateYCardInner, setRotateYCardInner] = useState('rotateY(0)');
     const [displayEsDiff, setDisplayEsDiff] = useState<string>();
@@ -45,12 +45,15 @@ const ServiceSection = () => {
     const checkDomES = () => {
         const esDom = document.querySelectorAll('.es-diffirent');
         if(esDom){
-            esDom.forEach(front => {
-                arrDomFront.push(front.querySelectorAll('.es-card-front'));
+            esDom.forEach(dom => {
+                const innerDom = dom.querySelector('.es-card-inner');
+                if(innerDom){
+                    const layotDiff = innerDom.querySelector('.es-card-front');
+                    layotDiff? arrDomFront.push(10): arrDomBack.push(10);
+                }
+
             });
-            esDom.forEach(back => {
-                arrDomBack.push(back.querySelectorAll('.es-card-back'));
-            });
+
             if(arrDomBack.length!==0) return 'back';
             else if(arrDomFront.length!==0) return 'front';
             else return undefined;
@@ -64,7 +67,6 @@ const ServiceSection = () => {
     }, [])
 
     useEffect(() => {
-        console.log('u');
         const diffirent = checkDomES();
         setDisplayEsDiff(diffirent==='front'? 'block': 'none');
     }, [dataSerWeb])
@@ -73,22 +75,30 @@ const ServiceSection = () => {
         setTimeout(() => {
             setSpanWebBg('#222222');
             setSpanWebColor('white');
-            setSpanAppBg('white');
+            setSpanAppBg('#f5f5f5');
             setSpanAppColor('#797979');
             setRotateYCardInner('rotateY(0)');
         }, 0.1);
-        setDisplayEsDiff(display => display==='block'? 'none': 'block');
+        if(filterDataApp && filterDataWeb){
+            if(filterDataApp.length<filterDataWeb.length){
+                setDisplayEsDiff('none')
+            } else setDisplayEsDiff('block');
+        }
     }
 
     const handleClickBackCard = () => {
         setTimeout(() => {
             setSpanAppBg('#222222');
             setSpanAppColor('white');
-            setSpanWebBg('white');
+            setSpanWebBg('#f5f5f5');
             setSpanWebColor('#797979');
             setRotateYCardInner('rotateY(180deg)');
         }, 0.1)
-        setDisplayEsDiff(display => display==='none'? 'block': 'none');
+        if(filterDataWeb && filterDataApp){
+            if(filterDataWeb.length< filterDataApp.length){
+                setDisplayEsDiff('none')
+            } else setDisplayEsDiff('block')
+        }
     }
 
     return(
@@ -118,7 +128,7 @@ const ServiceSection = () => {
                             Website
                         </span>
                     </div>
-                    <div className="es-row">
+                    <div className="es-row es-package">
                         {
                             filterDataApp?.length! >= filterDataWeb?.length! ?
 
@@ -250,8 +260,16 @@ const ServiceSection = () => {
                                                 <div className="es-card-front">
                                                 <span>{appItem.type}</span>
                                                 <div className="contact-services-app">
-                                                    <h1>{appItem.title}</h1>
-                                                    <h3>{appItem.subtitle}</h3>
+                                                    <h1 style={{
+                                                        fontSize: '35px',
+                                                        fontWeight: 600
+                                                    }}>{appItem.title}</h1>
+                                                    <h3 style={{
+                                                        fontSize: '30px',
+                                                        fontWeight: 600,
+                                                        marginTop: '-10px',
+                                                        marginBottom: '10px'
+                                                    }}>{appItem.subtitle}</h3>
                                                 </div>
                                                 <div className="content-package-app">
                                                     {contentApp?.map(items => {
