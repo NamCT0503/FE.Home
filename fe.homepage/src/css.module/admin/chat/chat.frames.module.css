@@ -169,6 +169,7 @@
     justify-content: space-between;
     align-items: end;
     padding: 5px;
+    position: relative;
 }
 .areaBottomChat textarea {
     width: 70%;
@@ -182,4 +183,11 @@
     transform: translateY(-25%);
 }
 
+.areaBottomChat i ~ div em-emoji-picker{
+    /* border: 10px solid black; */
+    position: absolute;
+    top: -1000%;
+    left: 20%;
+    transform: scale(0.8);
+}
 /* ================================== */

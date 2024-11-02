@@ -8,6 +8,7 @@ import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import Cookies from "js-cookie";
+import Picker from '@emoji-mart/react';
 import { sendReq } from "../Sign";
 import ServiceOverview from "./Service/service.overview";
 import ServicePackage from "./Service/service.package";
@@ -401,6 +402,21 @@ const AdminIndex = () => {
         }
     }
 
+    const handleClickEmoji = (id: number) => {
+        const dom = document.getElementById(`divEmoji${id}`);
+        if(dom){
+            dom.style.display = dom.style.display==='none'? 'block': 'none';
+        }
+        // setDisplayEmoji(display => display==='none'? 'block': 'none');
+    }
+
+    const handleSelectEmoji = (id: number, emoji: string) => {
+        const dom = document.getElementById(`textarea${id}`);
+        if(dom){
+            (dom as HTMLTextAreaElement).value = (dom as HTMLTextAreaElement).value+emoji;
+        }
+    }
+
     let idchatUnique: number[] = [];
     const dom = document.querySelectorAll('[class*="wrapContainerContent"], [class*="wrapContainerMenubar"], [class*="wrapNavbarHeader"]');
     if(dom){
@@ -565,24 +581,18 @@ const AdminIndex = () => {
                                     id={`textarea${frame.id}`}
                                     rows={1} 
                                     onInput={(e: ChangeEvent<HTMLTextAreaElement>) => handleInputMessage(e, frame.id)} 
-                                    // value={message}
-                                    // value={message.find(mess => mess.id===frame.id)?.message}
-                                    // onChange={(e) => setMessage((preData: any) => [...preData, {
-                                    //     id: frame.id,
-                                    //     message: e.target.value
-                                    // }])}
                                     onKeyDown={(e) => handleKeyDown(e, frame.id)}
-                                    // onClick={() => {
-                                    //     // setIsReadingFrameChat(frame.id);
-                                    //     isReadingFrameChatRef=frame.id
-                                    // }}
                                     onClick={() => handleClickTextArea(frame)}
-                                    // style={{
-                                    //     height: heightTextarea
-                                    // }}
                                 >
                                 </textarea>
-                                <i className="fa-solid fa-face-smile-beam"></i>
+                                <i className="fa-solid fa-face-smile-beam" onClick={() => handleClickEmoji(frame.id)}></i>
+                                <div 
+                                    id={`divEmoji${frame.id}`}
+                                    className={frameChat.containerEmoji} 
+                                    style={{display: 'none'}}
+                                >
+                                    <Picker locale='vi' onEmojiSelect={(emoji: any) => handleSelectEmoji(frame.id, emoji.native)} />
+                                </div>
                             </div>
                         </div>
                     )
