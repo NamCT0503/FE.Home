@@ -50,8 +50,12 @@ const AdminIndex = () => {
     const [showAllChatMessage1to1, setShowAllChatMessage1to1] = useState<any[]>([]);
     const [message, setMessage] = useState<any[]>([]);
     const [ws, setWS] = useState<WebSocket>();
+    const [uploadFile, setUploadFile] = useState<any[]>([]);
+    const [isSendFile, setIsSendFile] = useState<boolean>(false);
 
     const chatEndRef = useRef<HTMLDivElement | null>(null);
+    // const inputFile = useRef<HTMLInputElement>(null);
+    const inputFileRefs = useRef<{ [key: number]: HTMLInputElement | null }>({});
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -89,13 +93,10 @@ const AdminIndex = () => {
         getInfoAcc();
         fetchData(url_getSerWeb, 'web');
         fetchData(url_getSerApp, 'app');
-        // ws_getAllUserStatus(socket, parseInt(subAccount!),setLastestMessage); 
 
         socket.onmessage = async (e) => {
-            // console.log('e data: ', e.data);
             const data = JSON.parse(e.data);
             if(data.type === 'user-status'){
-                // console.log('ws data: ', data.users);
                 setUserStatus(data.users)
             }
             if(data.type === 'last-mess'){
@@ -109,9 +110,7 @@ const AdminIndex = () => {
                 });
             }
             if(data.type === 'lm-status-response'){
-                // console.log('lm status: ', data.users)
                 const chatWith = data.users?.filter((users: any) => users.id!=subAccount);
-                // console.log('lm status chatWith: ', chatWith)
                 await handleGetAllMessage1to1(chatWith[0]?.id);
             }
 
@@ -131,10 +130,7 @@ const AdminIndex = () => {
                         console.log('Fetch Error: ', error);
                     }
                 } 
-                // else {
-                    // console.log('isReading else')
-                    await handleGetAllMessage1to1(chatWith);
-                // }
+                await handleGetAllMessage1to1(chatWith);
             }
         }
 
@@ -149,14 +145,12 @@ const AdminIndex = () => {
         scrollToBottom();
     }, [frameMessage1to1.length, showAllChatMessage1to1, message, lastMessage]);
 
-    // useEffect(() => {
-    //     if(isReadingFrameChat){
-    //         handleGetAllMessage1to1(isReadingFrameChat);
-    //     }
-    // }, [isReadingFrameChat])
-// console.log('socket: ', ws);
     useEffect(() => {
         const messageToSend = message.find(mess => mess.message !== "");
+        const sendFile = uploadFile.find(file => {
+            return file.message !== null && file.id === isReadingFrameChatRef;
+        });
+
         if (messageToSend) {
             // console.log('mess input: ', messageToSend.message);
             if(ws){
@@ -176,7 +170,14 @@ const AdminIndex = () => {
                 dom.style.height = 'auto'
             }
         }
-    }, [message]);
+
+        if(sendFile){
+            console.log('sendFile: ', sendFile);
+            setTimeout(() => {
+                handleSendFile(sendFile.id);
+            }, 300);
+        }
+    }, [message, isSendFile]);
 
     if(!subAccount){
         return(
@@ -223,11 +224,9 @@ const AdminIndex = () => {
 
     const handleShowMessage = () => {
         setTimeout(() => {
-            // setDisplayContainerChat(display => display==='none'? 'flex': 'none');
             setDisplayContainerChat('flex');
         }, 0)
         setTimeout(() => {
-            // setTransXContainerChat(trans => trans==='translateX(100%)'? 'translateX(0)': 'translateX(100%)');
             setTransXContainerChat('translateX(0)');
         }, 100)
     }
@@ -260,14 +259,11 @@ const AdminIndex = () => {
     }
 
     const handleClickUserChat = async (user: UserStatusEntity) => {
-        // setDisplayContainerChat(display => display==='flex'? 'none': 'flex');
-        // console.log('user click: ', user);
         setTimeout(() => {
             setDisplayContainerChat('none');
         }, 100)
         setTransXContainerChat('translateX(100%)');
         setFrameMessage1to1(preData => [...preData, user]);
-        // setIsReadingFrameChat(user.id);
         isReadingFrameChatRef=user.id;
 
         const chat = lastMessage?.filter((item: any) => {
@@ -277,9 +273,7 @@ const AdminIndex = () => {
                 (subAccount==item.sender || subAccount==item.revicer)
             ) return item;
         })
-        // console.log('chat clcik: ', chat);
 
-        // const dom = document.querySelector(`#divLineChatLM${chat[0]?.idchat}`);
         const dom = document.getElementById(`divLineChatLM${chat[0]?.idchat}`);
         if(dom) dom.style.fontWeight = 'normal';
 
@@ -291,7 +285,6 @@ const AdminIndex = () => {
             });
 
             await handleGetAllMessage1to1(user.id);
-            // setMessage1to1(preData => [...preData, ...dataRes]);
         } catch (error) {
             console.log('Fetch Error: ', error);
         }
@@ -354,6 +347,7 @@ const AdminIndex = () => {
             e.preventDefault();
 
             const dom = document.getElementById(`textarea${id}`);
+            
             if(dom){
                 const messInput = (dom as HTMLTextAreaElement).value;
                 // setMessage(preData => [...preData, {
@@ -361,6 +355,7 @@ const AdminIndex = () => {
                 //     message: messInput
                 // }]);
 
+                setIsSendFile(true);
                 setMessage(prevMessages => {
                     const existingMessageIndex = prevMessages.findIndex(mess => mess.id === id);
     
@@ -417,12 +412,168 @@ const AdminIndex = () => {
         }
     }
 
+    const handleChangeFileUpload = (e: React.ChangeEvent<HTMLInputElement>, id: number) => {
+        const file = e.target.files?.[0];
+        console.log('file preview: ', file);
+        if(file){
+            if(file.type.includes('image')){
+                if(!file.name.endsWith('.png') && !file.name.endsWith('.jpg') && !file.name.endsWith('.jpeg'))
+                    return alert('Chỉ cho phép tải ảnh có phần mở rộng loại .png, .jpg hoặc .jpeg!');
+            } else {
+                if(!file.name.endsWith('.doc') && !file.name.endsWith('.docx') && !file.name.endsWith('.xlsx') && !file.name.endsWith('.pdf'))
+                    return alert('Chỉ cho phép tải file có phần mở rộng loại .doc, .docx, .pdf hoặc .xlsx')
+            }
+
+            const dom = document.getElementById(`previewFile${id}`);
+            const domChild = dom?.getElementsByTagName('div');
+            if(domChild){
+                setUploadFile(prevFiles => {
+                    const existingMessageIndex = prevFiles.findIndex(file => file.id === id);
+    
+                    if (existingMessageIndex !== -1) {
+                        const updatedMessages = [...prevFiles];
+                        updatedMessages[existingMessageIndex].message = file;
+                        return updatedMessages;
+                    } else {
+                        return [...prevFiles, { id: id, message: file }];
+                    }
+                });
+            }
+
+            // setUploadFile(file);
+            // const textArea = document.getElementById(`textarea${id}`) as HTMLInputElement;
+            // textArea.value = textArea.value
+
+            previewFileUpload(id, file);
+        }
+    }
+
+    const previewFileUpload = (id: number, file: File) => {
+        console.log('preview id: ', id);
+
+        const dom = document.getElementById(`previewFile${id}`);
+        console.log('dom file: ', dom);
+        if(dom && file){
+            dom.innerHTML = '';
+            const divChild = document.createElement('div');
+            let divChild_2nd: any;
+
+            divChild_2nd = document.createElement('div');
+            const iconClose = document.createElement('i');
+            iconClose.className = `fa-solid fa-xmark ${frameChat.closeDivPreview}`;
+            iconClose.addEventListener('click', () => {
+                dom.innerHTML = '';
+            });
+            divChild_2nd?.appendChild(iconClose);
+
+            if(file.type.includes('image')){
+                // divChild_2nd = document.createElement('img');
+                // divChild_2nd.src = URL.createObjectURL(file);
+
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                divChild_2nd?.appendChild(img);
+            } else {
+                // divChild_2nd = document.createElement('div');
+                const span = document.createElement('span');
+                span.innerText = file.name;
+
+                const iconFile = document.createElement('i');
+                iconFile.classList.add('fa-solid');
+                if (file.name.endsWith('.doc') || file.name.endsWith('.docx')) {
+                    iconFile.classList.add('fa-file-word');
+                } else if (file.name.endsWith('.pdf')) {
+                    iconFile.classList.add('fa-file-pdf');
+                } else if (file.name.endsWith('.xlsx')) {
+                    iconFile.classList.add('fa-file-excel');
+                }
+                iconFile.classList.add(`${frameChat.iconFile}`)
+
+                divChild_2nd?.appendChild(iconFile);
+                divChild_2nd?.appendChild(span);
+            }
+
+            divChild.appendChild(divChild_2nd);
+            dom.appendChild(divChild); 
+        }
+    }
+
+    const handleSendFile = (id: number) => {
+        try {
+            const file = uploadFile.find(items => {
+                return items.id===id && items.message!==null;
+            });
+            console.log('file sendfile: ', file);
+            if(file && ws){
+                console.log('if file and ws: ', file.message)
+                const reader = new FileReader();
+                reader.readAsDataURL(file.message);
+
+                reader.onload = () => {
+                    const formatFile = {
+                        id: id,
+                        fileName: file.message.name,
+                        fileType: file.message.type,
+                        fileSize: file.message.size,
+                        fileData: reader.result
+                    }
+                    ws.send(JSON.stringify({
+                        type: 'send-file',
+                        file: formatFile
+                    }));
+
+                    const dom = document.getElementById(`previewFile${id}`);
+                    if(dom) dom.innerHTML = '';
+                }
+
+                reader.onerror = (error) => console.log('FileReader Error: ', error);
+            }
+        } catch (error) {
+            console.log('FileReader Error: ', error);
+        }
+    }
+
+    const renderFileIcon = (fileName: string) => {
+        const iconClasses = ['fa-solid'];
+        if (fileName.endsWith('.doc') || fileName.endsWith('.docx')) {
+            iconClasses.push('fa-file-word');
+        } else if (fileName.endsWith('.pdf')) {
+            iconClasses.push('fa-file-pdf');
+        } else if (fileName.endsWith('.xlsx')) {
+            iconClasses.push('fa-file-excel');
+        }
+        return (
+            <div className={frameChat.fileMessage}>
+                <i className={iconClasses.join(' ')} />
+                <span>{fileName}</span>
+            </div>
+        );
+    };
+
+    const handleTypeShowMessage = (message: string, isQuickAccess: boolean) => {
+        try {
+            const messToJSON = JSON.parse(message);
+            const name = messToJSON.file;
+    
+            if (name.endsWith('.png') || name.endsWith('.jpg') || name.endsWith('.jpeg')) {
+                if(isQuickAccess) return 'Đã gửi một ảnh'
+                return <img src={`${API_BASE_URL}/${name}`} alt="image" />;
+            } else if (name.endsWith('.doc') || name.endsWith('.docx') || name.endsWith('.pdf') || name.endsWith('.xlsx')) {
+                if(isQuickAccess) return 'Đã gửi một file'
+                return renderFileIcon(name);
+            } else {
+                return message;
+            }
+        } catch (error) {
+            return message;
+        }
+    };
+
     let idchatUnique: number[] = [];
     const dom = document.querySelectorAll('[class*="wrapContainerContent"], [class*="wrapContainerMenubar"], [class*="wrapNavbarHeader"]');
     if(dom){
         dom.forEach((element) => {
             element.addEventListener('click', () => {
-                // setIsReadingFrameChat(undefined);
                 isReadingFrameChatRef=undefined;
             });
         });
@@ -433,7 +584,9 @@ const AdminIndex = () => {
     // // console.log('message 1:1: ', message1to1);
     console.log('frame mess: ', frameMessage1to1);
     console.log('all messs 1:1: ', showAllChatMessage1to1);
-    console.log('frame current: ', isReadingFrameChatRef);
+    // console.log('frame current: ', isReadingFrameChatRef);
+    // console.log('file: ', uploadFile);
+    console.log('sendFile: ', uploadFile)
 
     return(
         <>
@@ -482,6 +635,7 @@ const AdminIndex = () => {
                                         ){
                                             if(!idchatUnique.includes(item.idchat)){
                                                 idchatUnique.push(item.idchat);
+                                                const lastmessage = handleTypeShowMessage(item.lastMessage, true);
                                                 return(
                                                     <div 
                                                         id={`divLineChatLM${item.idchat}`}
@@ -493,9 +647,9 @@ const AdminIndex = () => {
                                                     >
                                                         {
                                                             item.sender==subAccount?
-                                                            `Bạn: ${item.lastMessage}`:
+                                                            `Bạn: ${lastmessage}`:
                                                             item.lastMessage?
-                                                            `${item.lastMessage}`:
+                                                            `${lastmessage}`:
                                                             'Chưa có tin nhắn nào.'
                                                         }
                                                     </div>
@@ -556,10 +710,18 @@ const AdminIndex = () => {
                                             if(items.status==='reviced') showStatus = `Đã nhận lúc ${convertTimeToHMMD(items.updatedAt)}`
                                             if(items.status==='seen') showStatus = `Đã xem lúc ${convertTimeToHMMD(items.updatedAt)}`
 
+                                            const message = handleTypeShowMessage(items.message, false);
+                                            const imgTag = items.message.endsWith('.png"}') || items.message.endsWith('.jpg"}') || items.message.endsWith('.jpeg"}')
+                                            
                                             return(
                                                 <>
                                                 <div key={items.id} className={`${frameChat.divMessage} ${items.sender==subAccount? frameChat.sendByMe: ''}`}>
-                                                    <div className={frameChat.message}>{items.message}</div>
+                                                    <div 
+                                                        id={`frameChat${items.id}`} 
+                                                        className={`${frameChat.message} ${imgTag? `${frameChat.imgMess}`: ''}`}
+                                                    >
+                                                        {message}
+                                                    </div>
                                                     <div className={frameChat.deltailChat}>
                                                         {showStatus}
                                                     </div>
@@ -575,23 +737,35 @@ const AdminIndex = () => {
                                 <div ref={chatEndRef} />
                             </div>
                             <div className={frameChat.areaBottomChat}>
-                                <i className="fa-solid fa-microphone"></i>
-                                <i className="fa-solid fa-images"></i>
-                                <textarea 
-                                    id={`textarea${frame.id}`}
-                                    rows={1} 
-                                    onInput={(e: ChangeEvent<HTMLTextAreaElement>) => handleInputMessage(e, frame.id)} 
-                                    onKeyDown={(e) => handleKeyDown(e, frame.id)}
-                                    onClick={() => handleClickTextArea(frame)}
-                                >
-                                </textarea>
-                                <i className="fa-solid fa-face-smile-beam" onClick={() => handleClickEmoji(frame.id)}></i>
-                                <div 
-                                    id={`divEmoji${frame.id}`}
-                                    className={frameChat.containerEmoji} 
-                                    style={{display: 'none'}}
-                                >
-                                    <Picker locale='vi' onEmojiSelect={(emoji: any) => handleSelectEmoji(frame.id, emoji.native)} />
+                                <div id={`previewFile${frame.id}`} className={frameChat.previewFile}></div>
+                                <div className={frameChat.areaChat}>
+                                    <i className="fa-solid fa-microphone"></i>
+                                    <i id={frame.id} className="fa-solid fa-images" 
+                                        onClick={() => inputFileRefs.current[frame.id]?.click()}
+                                    >
+                                    </i>
+                                    <input 
+                                        type="file" 
+                                        ref={(el) => (inputFileRefs.current[frame.id] = el)}
+                                        onChange={e => handleChangeFileUpload(e, frame.id)}
+                                        style={{display: 'none'}}
+                                    />
+                                    <textarea 
+                                        id={`textarea${frame.id}`}
+                                        rows={1} 
+                                        onInput={(e: ChangeEvent<HTMLTextAreaElement>) => handleInputMessage(e, frame.id)} 
+                                        onKeyDown={(e) => handleKeyDown(e, frame.id)}
+                                        onClick={() => handleClickTextArea(frame)}
+                                    >
+                                    </textarea>
+                                    <i className="fa-solid fa-face-smile-beam" onClick={() => handleClickEmoji(frame.id)}></i>
+                                    <div 
+                                        id={`divEmoji${frame.id}`}
+                                        className={frameChat.containerEmoji} 
+                                        style={{display: 'none'}}
+                                    >
+                                        <Picker locale='vi' onEmojiSelect={(emoji: any) => handleSelectEmoji(frame.id, emoji.native)} />
+                                    </div>
                                 </div>
                             </div>
                         </div>
